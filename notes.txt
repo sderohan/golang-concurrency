@@ -1,0 +1,15 @@
+Whenever a channel is declared, whatever may be its type memory is allocated.
+But When Empty Struct is Used as Type, no memory is allocated and is used as only Signal only Channel.
+
+Below select pattern does not deadlocks
+- If u include for loop than also won't deadlock
+func main() {
+	ch := make(chan int)
+
+	select {
+	case <-ch:
+		fmt.Println("waiting for value")
+	default:
+		fmt.Println("no deadlocks")
+	}
+}
